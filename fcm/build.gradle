@@ -1,0 +1,49 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 32
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+
+
+def getRootProjectExtOrCoreProperty(name) {
+    if (!rootProject.ext.has('NRFirebase')) throw new GradleException("Please add NRFirebase.Version ext in root.gradle, refer to docs")
+    if (!rootProject.ext.get('NRFirebase')[name]) throw new GradleException("Please add Version properties inside NRFirebase in root.gradle, refer to docs")
+    return rootProject.ext.get('NRFirebase').get(name)
+}
+
+dependencies {
+    //Firebase Core
+    api platform("com.google.firebase:firebase-bom:${getRootProjectExtOrCoreProperty("Version")}")
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    api 'com.google.firebase:firebase-messaging'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+}

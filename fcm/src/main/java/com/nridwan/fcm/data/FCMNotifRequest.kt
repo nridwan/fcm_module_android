@@ -1,4 +1,4 @@
-package com.nridwan.firebaseexample.firebase.messaging.data
+package com.nridwan.fcm.data
 
 import android.net.Uri
 import androidx.annotation.DrawableRes

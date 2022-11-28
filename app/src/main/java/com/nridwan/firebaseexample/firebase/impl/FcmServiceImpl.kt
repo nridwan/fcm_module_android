@@ -6,8 +6,8 @@ import android.os.Build
 import com.google.firebase.messaging.RemoteMessage
 import com.nridwan.firebaseexample.MainActivity
 import com.nridwan.firebaseexample.R
-import com.nridwan.firebaseexample.firebase.messaging.FCMService
-import com.nridwan.firebaseexample.firebase.messaging.data.FCMNotifRequest
+import com.nridwan.fcm.FCMService
+import com.nridwan.fcm.data.FCMNotifRequest
 
 class FcmServiceImpl : FCMService() {
     companion object {
