@@ -64,8 +64,8 @@ afterEvaluate {
                 url = uri("https://maven.pkg.github.com/nridwan/fcm_module_android")
 
                 credentials {
-                    username = git_username
-                    password = git_password
+                    username = github_username
+                    password = github_password
                 }
             }
         }

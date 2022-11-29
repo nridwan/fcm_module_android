@@ -1,10 +1,15 @@
 buildscript {
-    if(rootProject.file("github.properties").exists()) {
-        apply from: rootProject.file("github.properties")
-    }
     ext {
         compose_version = '1.3.1'
         firebase_version = '31.1.0'
+        github_username = ''
+        github_password = ''
+        if(rootProject.file("github.properties").exists()) {
+            Properties properties = new Properties()
+            properties.load(rootProject.file("github.properties").newDataInputStream())
+            github_username = properties.getOrDefault("github_username", "")
+            github_password = properties.getOrDefault("github_password", "")
+        }
     }
     dependencies {
         classpath 'com.google.gms:google-services:4.3.14'

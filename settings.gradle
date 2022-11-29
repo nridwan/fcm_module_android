@@ -10,6 +10,17 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        if(new File(rootDir.absolutePath + "/github.properties").exists()) {
+            Properties properties = new Properties()
+            properties.load(new File(rootDir.absolutePath + "/github.properties").newDataInputStream())
+            maven {
+                url = uri("https://maven.pkg.github.com/nridwan/fcm_module_android")
+                credentials {
+                    username = properties.getOrDefault("github_username", "")
+                    password = properties.getOrDefault("github_password", "")
+                }
+            }
+        }
     }
 }
 rootProject.name = "Firebase Modules"
