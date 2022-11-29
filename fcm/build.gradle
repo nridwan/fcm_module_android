@@ -29,17 +29,9 @@ android {
     }
 }
 
-
-
-def getRootProjectExtOrCoreProperty(name) {
-    if (!rootProject.ext.has('NRFirebase')) throw new GradleException("Please add NRFirebase.Version ext in root.gradle, refer to docs")
-    if (!rootProject.ext.get('NRFirebase')[name]) throw new GradleException("Please add Version properties inside NRFirebase in root.gradle, refer to docs")
-    return rootProject.ext.get('NRFirebase').get(name)
-}
-
 dependencies {
     //Firebase Core
-    api platform("com.google.firebase:firebase-bom:${getRootProjectExtOrCoreProperty("Version")}")
+    compileOnly platform("com.google.firebase:firebase-bom:$firebase_version")
     implementation 'com.google.firebase:firebase-analytics-ktx'
     api 'com.google.firebase:firebase-messaging'
 
