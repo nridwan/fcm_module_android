@@ -6,8 +6,8 @@ import android.os.Build
 import com.google.firebase.messaging.RemoteMessage
 import com.nridwan.firebaseexample.MainActivity
 import com.nridwan.firebaseexample.R
-import com.nridwan.fcm.FCMService
-import com.nridwan.fcm.data.FCMNotifRequest
+import com.nridwan.firebase.fcm.FCMService
+import com.nridwan.firebase.fcm.data.FCMNotifRequest
 
 class FcmServiceImpl : FCMService() {
     companion object {
@@ -50,5 +50,8 @@ class FcmServiceImpl : FCMService() {
                 PendingIntent.FLAG_MUTABLE
             else PendingIntent.FLAG_ONE_SHOT
         )
+    }
+
+    override fun onNewToken(token: String) {
     }
 }

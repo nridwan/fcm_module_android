@@ -1,4 +1,4 @@
-package com.nridwan.fcm
+package com.nridwan.firebase.fcm
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.nridwan.fcm.test", appContext.packageName)
+        assertEquals("com.nridwan.firebase.fcm.test", appContext.packageName)
     }
 }

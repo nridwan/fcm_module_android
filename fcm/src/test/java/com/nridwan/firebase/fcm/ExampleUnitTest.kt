@@ -1,4 +1,4 @@
-package com.nridwan.fcm
+package com.nridwan.firebase.fcm
 
 import org.junit.Test
 

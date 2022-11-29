@@ -1,4 +1,4 @@
-package com.nridwan.fcm
+package com.nridwan.firebase.fcm
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -9,7 +9,7 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import com.nridwan.fcm.data.FCMNotifRequest
+import com.nridwan.firebase.fcm.data.FCMNotifRequest
 import kotlin.random.Random
 
 abstract class FCMService : FirebaseMessagingService() {
@@ -66,7 +66,7 @@ abstract class FCMService : FirebaseMessagingService() {
         val notificationBuilder = configureNotification(
             NotificationCompat.Builder(this, getOrCreateChannel(notificationManager, request))
                 .apply {
-                    if (request.color != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                    if (request.color != null)
                         color = request.color
                 }
                 .setSmallIcon(
@@ -82,5 +82,8 @@ abstract class FCMService : FirebaseMessagingService() {
         )
 
         notificationManager.notify(Random.nextInt(9999 - 1000) + 1000, notificationBuilder.build())
+    }
+
+    override fun onNewToken(token: String) {
     }
 }
