@@ -24,6 +24,6 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Firebase Modules"
-include ':app'
+include ':example'
 include ':fcm'
 include ':analytics'
