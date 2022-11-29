@@ -1,10 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
 }
-
-group = 'com.nridwan.firebase'
-version = '0.0.1'
 
 android {
     compileSdk 32
@@ -29,6 +27,48 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    publishing {
+        multipleVariants {
+            withSourcesJar()
+            withJavadocJar()
+            allVariants()
+        }
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId 'com.nridwan.firebase'
+                artifactId 'analytics'
+                version '0.0.1'
+            }
+
+            debug(MavenPublication) {
+                from components.debug
+
+                groupId 'com.nridwan.firebase'
+                artifactId 'analytics'
+                version '0.0.1'
+            }
+        }
+
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/nridwan/fcm_module_android")
+
+                credentials {
+                    username = git_username
+                    password = git_password
+                }
+            }
+        }
     }
 }
 
