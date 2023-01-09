@@ -38,12 +38,6 @@ android {
     }
 }
 
-task asdasd {
-    doLast {
-        println("$github_username $github_password")
-    }
-}
-
 afterEvaluate {
     publishing {
         publications {
